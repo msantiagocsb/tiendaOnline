@@ -1,0 +1,29 @@
+<html>
+<body>
+	<main>
+		<div>
+			<h2>
+				Listado de productos
+			</h2>
+            <div>
+            	<table>
+            		{{#datos}}
+            			<tr>
+            				<td>
+            					<a href="/producto/{{id}}">{{titulo}}</a>
+            				</td>
+            				<td>
+            					{{precio}}
+            					{{titulo}}
+            				</td>
+            			</tr>
+            		{{/datos}}
+           		</table>
+            </div>
+            <div>
+            	
+            </div>
+		</div>
+	</main>
+</body>
+</html>

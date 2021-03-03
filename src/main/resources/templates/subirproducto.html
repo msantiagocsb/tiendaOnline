@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+			 crossorigin="anonymous">
+		 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
+			 integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		  	crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			crossorigin="anonymous"></script>
+	
+	</head>
+	
+	
+	<body>
+			
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  		<a class="navbar-brand" href="/">Market Place</a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+  		<div class="collapse navbar-collapse">
+    		<form class="form-inline my-2 my-lg-0">
+      			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    		</form>
+  		</div>
+  		<ul class="nav justify-content-end">
+			<form method="post" action="/logout">
+				<input type="submit" value="Sign Out"  class="btn btn-danger"/>
+				<input type="hidden" name="_csrf" value="{{token}}"/>
+			</form>
+		</ul>
+	</nav>
+	<nav class="nav justify-content-center">
+  		<a class="nav-link" href="/usuario/{{id}}">Tus Productos</a>
+  		<a class="nav-link" href="/{{id}}/chats">Chats</a>
+  		<a class="nav-link" href="/gestionenvios">Envíos</a>
+	</nav>
+	
+	
+	
+	<div class="container">
+	<br>
+		<h2>{{^titulo}}Subir{{/titulo}}{{#titulo}}Actualizar{{/titulo}} Producto</h2>
+				<form action="inputproducto" method="POST">
+				  
+				  <div class="form-group">
+				    <label for="exampleFormControlSelect1">Selecciona una categoría </label>
+				    <select name= 'categoriaIntroducido' class="form-control" id="exampleFormControlSelect1" required>
+				      <option selected="selected">{{#categoria}}{{categoria}}{{/categoria}}</option>
+				      <option>Coches</option>
+				      <option>Motos</option>
+				      <option>Informática y tegnología</option>
+				      <option>Electrodomesticos</option>
+				      <option>Aficiones</option>
+				      <option>Deportes</option>
+				      <option>Música</option>
+				      <option>Mascotas</option>
+				      <option>Moda</option>
+				      <option>Hogar y jardin</option>
+				      <option>Videojuegos y consolas</option>
+				      <option>Otros</option>
+				        
+				    </select>
+				  </div>
+				  	<div class="form-group">
+				    	<label for="exampleFormControlInput1">Tìtulo</label>
+				    	<input value="{{#titulo}}{{titulo}}{{/titulo}}" type="text"  name='tituloIntroducido' class="form-control" id="inputTitulo" placeholder="Título*"required>
+				  	</div>
+				  	<div class="form-group">
+				    	<label for="exampleFormControlTextarea1">Descripción</label>
+				    	<textarea name='descripcionIntroducido' class="form-control" id="inputDescripcion" rows="3" placeholder="Descripción*"required>{{#descripcion}}{{descripcion}}{{/descripcion}}</textarea>
+				  	</div>
+				  	<div class="form-group">
+				    	<label for="exampleFormControlInput1">Precio</label>
+				    	<input value="{{#precio}}{{precio}}{{/precio}}" type="text" name='precioIntroducido' class="form-control" id="inputPrecio" placeholder="Precio €*"required>
+				  	</div>
+				  	
+				  	<input type="hidden" name="_csrf" value="{{token}}"/>
+				  	{{^titulo}}
+				 	<input class="btn btn-primary" type="submit" value="Subir">
+				 	{{/titulo}}
+				 	{{#titulo}}
+				 	<input type="hidden" name="id" value="{{#productid}}{{productid}}{{/productid}}"/>
+				 	<input class="btn btn-primary" type="submit" value="Actualizar">
+				 	{{/titulo}}
+		    	  	<button type="button" href="/" class="btn btn-danger">Cancelar</button>
+				 </form>
+			  </div>
+			
+			
+			
+	</body>
+</html>

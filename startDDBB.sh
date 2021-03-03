@@ -1,0 +1,1 @@
+sudo docker run --name some-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=pass -e MYSQL_DATABASE=db_marketplace_sec -d mysql:5.6

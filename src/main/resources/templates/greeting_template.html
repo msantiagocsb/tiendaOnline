@@ -1,0 +1,23 @@
+<html>
+<body>
+	<main>
+		<div>
+			<a class="nav-link" href="registrar">Registrar</a>
+			<a class="nav-link" href="login">Autenticar</a>
+		</div>
+		<div>
+			<h2>
+				Inserta el propietario del chat
+			</h2>
+			<div>
+				<form action="inputchat" method="POST">
+					<input type='text' name='user1'/>Usuario 1 del chat
+					<input type='text' name='user2'/>Usuario 2 del chat
+					<input type="hidden" name="_csrf" value="{{token}}"/>
+					<input type='submit' value='Enviar'>
+				</form>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
